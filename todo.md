@@ -6,5 +6,6 @@
         1. text field
         2. user forein key 
         3. created_at and updated_at fields
-    - [ ] PostSerializer
+    - [ ] Add Post model to admin
+    - [ ] Post Api
 - [ ] Token authorization
