@@ -2,10 +2,10 @@
 
 - [x] CustomUser model
 - [ ] Posts
-    - [ ] Post model
+    - [x] Post model
         1. text field
         2. user forein key 
         3. created_at and updated_at fields
-    - [ ] Add Post model to admin
+    - [x] Add Post model to admin
     - [ ] Post Api
 - [ ] Token authorization
