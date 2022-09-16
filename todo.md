@@ -11,5 +11,6 @@
         - [ ] serializer
         - [ ] viewset
         - [ ] add to the router
+- [x] DRF
 - [ ] REST API router
 - [ ] Token authorization
