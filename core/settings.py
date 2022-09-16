@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     'apps.accountsapp',
     'apps.postsapp',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
