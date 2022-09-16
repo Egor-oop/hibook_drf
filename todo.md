@@ -10,7 +10,7 @@
     - [ ] Post Api
         - [x] serializer
         - [x] viewset
-        - [ ] add to the router
+        - [x] add to the router
 - [x] DRF
 - [x] REST API router
 - [ ] Token authorization

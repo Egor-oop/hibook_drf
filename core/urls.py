@@ -20,7 +20,10 @@ from django.conf.urls.static import static
 
 from rest_framework import routers
 
+from apps.postsapp.views import PostViewSet
+
 router = routers.DefaultRouter()
+router.register(r'posts', PostViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
