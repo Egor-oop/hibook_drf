@@ -8,4 +8,8 @@
         3. created_at and updated_at fields
     - [x] Add Post model to admin
     - [ ] Post Api
+        - [ ] serializer
+        - [ ] viewset
+        - [ ] add to the router
+- [ ] REST API router
 - [ ] Token authorization
