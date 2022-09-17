@@ -13,15 +13,15 @@ class ExpiringTokenAuthentication(TokenAuthentication):
         try:
             token = Token.objects.get(key=key)
         except Token.DoesNotExist:
-            raise AuthenticationFailed('Неверный токен')
+            raise AuthenticationFailed('Invalid token')
 
         if not token.user.is_active:
-            raise AuthenticationFailed('Пользователь неактивен или удалён')
+            raise AuthenticationFailed('User is inactive or deleted')
 
         utc_now = datetime.datetime.utcnow()
         utc_now = utc_now.replace(tzinfo=pytz.utc)
 
         if token.created < utc_now - settings.TOKEN_EXPIRE_TIME:
-            raise AuthenticationFailed('Токен просрочен')
+            raise AuthenticationFailed('Token is expired')
         
         return token.user, token
