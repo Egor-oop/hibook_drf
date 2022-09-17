@@ -24,8 +24,8 @@ from apps.postsapp.views import PersonalPostViewSet, PostViewSet
 from apps.accountsapp.views import UserDetail, RegisterUserAPIView, CustomAuthToken
 
 router = routers.DefaultRouter()
-router.register(r'posts', PostViewSet)
-router.register(r'personalposts', PersonalPostViewSet)
+router.register(r'posts', PostViewSet, basename='posts')
+router.register(r'personalposts', PersonalPostViewSet, basename='personalposts')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
