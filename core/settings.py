@@ -149,4 +149,4 @@ REST_FRAMEWORK = {
     ]
 }
 
-TOKEN_EXPIRE_TIME = datetime.timedelta(seconds=30)
+TOKEN_EXPIRE_TIME = datetime.timedelta(days=14)
