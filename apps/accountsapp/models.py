@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 
 
 class CustomUser(AbstractUser):
-    image = models.ImageField(upload_to='users_images/')
+    image = models.ImageField(upload_to='users_images/', null=True, blank=True)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
