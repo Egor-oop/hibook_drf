@@ -8,7 +8,7 @@ from .models import CustomUser
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["id", "first_name", "last_name", "username"]
+        fields = ['id', 'first_name', 'last_name', 'username']
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -25,8 +25,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('username', 'password', 'password2',
                   'email', 'first_name', 'last_name')
         extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True}
+            'first_name': {'required': False},
+            'last_name': {'required': False},
         }
 
     def validate(self, attrs):
