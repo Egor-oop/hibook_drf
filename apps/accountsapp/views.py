@@ -1,13 +1,14 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .serializers import UserSerializer, RegisterSerializer
-from rest_framework import generics
+from rest_framework import generics, viewsets, mixins
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .authenication import ExpiringTokenAuthentication
 
 from django.conf import settings
 from .models import CustomUser
+from .permissions import IsCurrentUserOrReadOnly
 
 import datetime
 import pytz
@@ -27,6 +28,15 @@ class UserDetail(generics.RetrieveAPIView):
 class RegisterUserAPIView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+
+
+class AccountViewSet(mixins.RetrieveModelMixin,
+                     mixins.UpdateModelMixin,
+                     mixins.ListModelMixin,
+                     viewsets.GenericViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsCurrentUserOrReadOnly,)
 
 
 class CustomAuthToken(ObtainAuthToken):

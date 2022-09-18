@@ -21,11 +21,12 @@ from django.conf.urls.static import static
 from rest_framework import routers
 
 from apps.postsapp.views import PersonalPostViewSet, PostViewSet
-from apps.accountsapp.views import UserDetail, RegisterUserAPIView, CustomAuthToken
+from apps.accountsapp.views import UserDetail, RegisterUserAPIView, CustomAuthToken, AccountViewSet
 
 router = routers.DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
 router.register(r'personalposts', PersonalPostViewSet, basename='personalposts')
+router.register(r'users', AccountViewSet, basename='users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

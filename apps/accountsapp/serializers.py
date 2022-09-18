@@ -8,7 +8,11 @@ from .models import CustomUser
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'first_name', 'last_name', 'username']
+        fields = ('id', 'first_name',
+                  'last_name','username')
+        extra_kwargs = {
+            'username': {'required': False}
+        }
 
 
 class RegisterSerializer(serializers.ModelSerializer):
