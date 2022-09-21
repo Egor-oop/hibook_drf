@@ -7,7 +7,7 @@ from apps.accountsapp.permissions import IsOwnerOrReadOnly
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-id')
     serializer_class = PostSerializer
     permission_classes = (IsOwnerOrReadOnly,)
 
@@ -17,12 +17,12 @@ class PostViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user_id = self.request.query_params.get('userid', None)
         if user_id != None:
-            return Post.objects.filter(user=user_id)
+            return Post.objects.filter(user=user_id).order_by('-id')
         return self.queryset
 
 
 class PersonalPostViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-id')
     serializer_class = PostSerializer
     permission_classes = (IsAuthenticated,)
 
