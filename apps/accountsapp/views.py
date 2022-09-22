@@ -1,4 +1,4 @@
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from .serializers import UserSerializer, RegisterSerializer
 from rest_framework import generics, viewsets, mixins
@@ -37,6 +37,16 @@ class AccountViewSet(mixins.RetrieveModelMixin,
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsCurrentUserOrReadOnly,)
+
+
+class PersonalAccountViewSet(mixins.ListModelMixin,
+                             viewsets.GenericViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return CustomUser.objects.filter(id=self.request.user.id)
 
 
 class CustomAuthToken(ObtainAuthToken):

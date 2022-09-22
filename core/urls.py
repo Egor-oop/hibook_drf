@@ -21,12 +21,16 @@ from django.conf.urls.static import static
 from rest_framework import routers
 
 from apps.postsapp.views import PersonalPostViewSet, PostViewSet
-from apps.accountsapp.views import UserDetail, RegisterUserAPIView, CustomAuthToken, AccountViewSet
+from apps.accountsapp.views import (
+    UserDetail, RegisterUserAPIView, CustomAuthToken,
+    AccountViewSet, PersonalAccountViewSet
+)
 
 router = routers.DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
 router.register(r'personalposts', PersonalPostViewSet, basename='personalposts')
 router.register(r'users', AccountViewSet, basename='users')
+router.register(r'personal', PersonalAccountViewSet, basename='personal')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +38,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
-    path('account/<pk>/detail', UserDetail.as_view()),
     path('register/', RegisterUserAPIView.as_view()),
     path('login/', CustomAuthToken.as_view()),
 ]
