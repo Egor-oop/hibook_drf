@@ -32,7 +32,7 @@ SECRET_KEY = getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -156,5 +156,5 @@ REST_FRAMEWORK = {
 
 TOKEN_EXPIRE_TIME = datetime.timedelta(days=14)
 
-CORS_ALLOWED_ORIGINS = ['https://*']
+CORS_ALLOWED_ORIGINS = ['https://*', 'http://localhost:3000']
 
